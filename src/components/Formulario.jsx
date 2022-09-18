@@ -1,7 +1,24 @@
 import React from 'react'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form, Field, } from 'formik'
+import * as Yup from 'yup'
+import Alerta from './Alerta'
 
 const Formulario = () => {
+    const nuevoClienteSchema = Yup.object().shape({
+        nombre: Yup.string()
+            .min(3, 'El nombres es muy corto')
+            .required('El nombre es obligatorio'),
+        empresa: Yup.string()
+            .required('El nombre de la empresa es obligatorio'),
+        email: Yup.string()
+            .email('Email no valido')
+            .required('El email es obligatorio'),
+        telefono: Yup.number()
+            .positive('El número no es válido')
+            .integer('El número no es válido')
+            .typeError('El número no es válido'),
+    })
+
     const handleSubmit = (values) => {
         console.log(values);
     }
@@ -17,99 +34,119 @@ const Formulario = () => {
                     empresa: '',
                     email: '',
                     telefono: '',
-                    notas: ''
+                    notas: '',
                 }}
 
                 onSubmit={(values) => {
                     handleSubmit(values)
                 }}
+
+                validationSchema={nuevoClienteSchema}
             >
 
-                {() => (
-                    <Form className='mt-10'>
-                        <div className='mb-4'>
-                            <label
-                                className='text-gray-800'
-                                htmlFor='nombre'
-                            >Nombre: </label>
+                {({ errors, touched }) => {
+                    return (
+                        <Form className='mt-10'>
+                            <div className='mb-4'>
+                                <label
+                                    className='text-gray-800'
+                                    htmlFor='nombre'
+                                >Nombre: </label>
 
-                            <Field
-                                id="nombre"
-                                type="text"
-                                className="mt-2 block w-full p-3 bg-gray-50"
-                                placeholder="Nombre del cliente"
-                                name="nombre"
+                                <Field
+                                    id="nombre"
+                                    type="text"
+                                    className="mt-2 block w-full p-3 bg-gray-50"
+                                    placeholder="Nombre del cliente"
+                                    name="nombre"
+                                />
+
+                                {errors.nombre && touched.nombre ? (
+                                    <Alerta>{errors.nombre}</Alerta>
+                                ) : null}
+                            </div>
+
+                            <div className='mb-4'>
+                                <label
+                                    className='text-gray-800'
+                                    htmlFor='empresa'
+                                >Empresa: </label>
+
+                                <Field
+                                    id="empresa"
+                                    type="text"
+                                    className="mt-2 block w-full p-3 bg-gray-50"
+                                    placeholder="Empresa del cliente"
+                                    name="empresa"
+                                />
+
+                                {errors.empresa && touched.empresa ? (
+                                    <Alerta>{errors.empresa}</Alerta>
+                                ) : null}
+                            </div>
+
+                            <div className='mb-4'>
+                                <label
+                                    className='text-gray-800'
+                                    htmlFor='email'
+                                >Email: </label>
+
+                                <Field
+                                    id="email"
+                                    type="email"
+                                    className="mt-2 block w-full p-3 bg-gray-50"
+                                    placeholder="Email del cliente"
+                                    name="email"
+                                />
+
+                                {errors.email && touched.email ? (
+                                    <Alerta>{errors.email}</Alerta>
+                                ) : null}
+                            </div>
+
+                            <div className='mb-4'>
+                                <label
+                                    className='text-gray-800'
+                                    htmlFor='telefono'
+                                >Teléfono: </label>
+
+                                <Field
+                                    id="telefono"
+                                    type="tel"
+                                    className="mt-2 block w-full p-3 bg-gray-50"
+                                    placeholder="Teléfono del cliente"
+                                    name='telefono'
+                                />
+
+                                {errors.telefono && touched.telefono ? (
+                                    <Alerta>{errors.telefono}</Alerta>
+                                ) : null}
+                            </div>
+
+                            <div className='mb-4'>
+                                <label
+                                    className='text-gray-800'
+                                    htmlFor='notas'
+                                >Notas: </label>
+
+                                <Field
+                                    as="textarea"
+                                    id="notas"
+                                    type="text"
+                                    className="mt-2 block w-full p-3 bg-gray-50 h-40"
+                                    placeholder="Notas del cliente"
+                                    name='notas'
+                                />
+                            </div>
+
+                            <input
+                                type='submit'
+                                value="Agregar Cliente"
+                                className='mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold text-lg'
                             />
-                        </div>
-
-                        <div className='mb-4'>
-                            <label
-                                className='text-gray-800'
-                                htmlFor='empresa'
-                            >Empresa: </label>
-
-                            <Field
-                                id="empresa"
-                                type="text"
-                                className="mt-2 block w-full p-3 bg-gray-50"
-                                placeholder="Empresa del cliente"
-                                name="empresa"
-                            />
-                        </div>
-
-                        <div className='mb-4'>
-                            <label
-                                className='text-gray-800'
-                                htmlFor='email'
-                            >Email: </label>
-
-                            <Field
-                                id="email"
-                                type="email"
-                                className="mt-2 block w-full p-3 bg-gray-50"
-                                placeholder="Email del cliente"
-                                name="email"
-                            />
-                        </div>
-
-                        <div className='mb-4'>
-                            <label
-                                className='text-gray-800'
-                                htmlFor='telefono'
-                            >Teléfono: </label>
-
-                            <Field
-                                id="telefono"
-                                type="tel"
-                                className="mt-2 block w-full p-3 bg-gray-50"
-                                placeholder="Teléfono del cliente"
-                                name='telefono'
-                            />
-                        </div>
-
-                        <div className='mb-4'>
-                            <label
-                                className='text-gray-800'
-                                htmlFor='notas'
-                            >Notas: </label>
-
-                            <Field
-                                as="textarea"
-                                id="notas"
-                                type="text"
-                                className="mt-2 block w-full p-3 bg-gray-50 h-40"
-                                placeholder="Notas del cliente"
-                                name='notas'
-                            />
-                        </div>
-
-                        <input
-                            type='submit'
-                            value="Agregar Cliente"
-                            className='mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold text-lg'
-                        />
-                    </Form>
-                )}
+                        </Form>
+                    )
+                }}
             </Formik>
         </div>
     )
