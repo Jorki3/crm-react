@@ -7,6 +7,22 @@
       "telefono": "871000000",
       "notas": "Notas del sistema",
       "id": 1
+    },
+    {
+      "nombre": "Erick",
+      "empresa": "BarbageCode",
+      "email": "eduardomttzt01@outlook.com",
+      "telefono": "8717321111",
+      "notas": "Notas del sistema",
+      "id": 2
+    },
+    {
+      "nombre": "Jorkie",
+      "empresa": "Dj Jorkie",
+      "email": "jorkie@jorkie.com",
+      "telefono": "",
+      "notas": "",
+      "id": 3
     }
   ]
 }
