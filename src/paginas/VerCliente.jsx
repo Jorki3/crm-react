@@ -22,7 +22,7 @@ const VerCliente = () => {
 
             setTimeout(() => {
                 setCargando(!cargando)
-            }, 3000)
+            }, 1000)
         }
 
         obtenerClienteAPI()

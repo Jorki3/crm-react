@@ -1,7 +1,7 @@
 {
   "clientes": [
     {
-      "nombre": "David",
+      "nombre": "David Martinez",
       "empresa": "BarbageCode",
       "email": "eduardomttzt01@outlook.com",
       "telefono": "871000000",
@@ -9,9 +9,9 @@
       "id": 1
     },
     {
-      "nombre": "Erick",
+      "nombre": "Erick Lopez",
       "empresa": "BarbageCode",
-      "email": "eduardomttzt01@outlook.com",
+      "email": "correo@correo.com",
       "telefono": "8717321111",
       "notas": "Notas del sistema",
       "id": 2
