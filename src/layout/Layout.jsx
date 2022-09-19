@@ -11,15 +11,15 @@ const Layout = () => {
                 <h2 className="text-4xl font-black text-center text-white">CRM - Clientes</h2>
                 <nav className="mt-10">
                     <Link
-                        className={`${urlActual === '/clientes' ? 'text-blue-300'
+                        className={`${urlActual === '/' ? 'text-blue-300'
                             : 'text-white'} text-2xl block mt-2 hover:text-blue-300`
                         }
-                        to="/clientes"
+                        to=""
                     >Clientes</Link>
                     <Link
-                        className={`${urlActual === '/clientes/nuevo' ? 'text-blue-300'
+                        className={`${urlActual === '/nuevo' ? 'text-blue-300'
                             : 'text-white'} text-2xl block mt-2 hover:text-blue-300`}
-                        to="/clientes/nuevo"
+                        to="/nuevo"
                     >Nuevo Cliente</Link>
                 </nav>
             </div>
